@@ -1,0 +1,123 @@
+,courses_names,courses_links,level,school
+0,Curso Profesional de Git y GitHub,/cursos/git-github/,Cursos Básicos,Data_science
+1,Curso Básico de Python,/cursos/pythonbasico/,Cursos Básicos,Data_science
+2,Curso de Introducción al Pensamiento Computacional con Python,/cursos/python-cs/,Cursos Básicos,Data_science
+3,Curso de POO y Algoritmos con Python,/cursos/poo-python/,Cursos Básicos,Data_science
+4,Curso de Programación Dinámica y Estocástica con Python,/cursos/programacion-estocastica/,Cursos Básicos,Data_science
+5,Curso de Introducción al Pensamiento Probabilístico,/cursos/probabilistica/,Cursos Básicos,Data_science
+6,Curso de Introducción a la Terminal y Línea de Comandos,/cursos/terminal/,Cursos Básicos,Data_science
+7,Fundamentos de Bases de Datos,/cursos/bd/,Cursos Básicos,Data_science
+8,Curso de SQL y MySQL,/cursos/sql-mysql/,Cursos Básicos,Data_science
+9,Curso de SQL en Azure,/cursos/sql-azure/,Cursos Básicos,Data_science
+10,Diseñar un Pipeline de transformación de datos,,Cursos Básicos,Data_science
+11,Curso de Ingeniería de Datos con Python,/cursos/ingenieria-datos/,"Ingeniería de Datos: Obteniendo, procesando y almacenando datos",Data_science
+12,Curso de Web Scraping: Extracción de Datos en la Web,/cursos/webscraping/,"Ingeniería de Datos: Obteniendo, procesando y almacenando datos",Data_science
+13,Curso de Fundamentos de Web Scraping con Python y Xpath,/cursos/web-scraping/,"Ingeniería de Datos: Obteniendo, procesando y almacenando datos",Data_science
+14,Curso de Scrapy,/cursos/scrapy/,"Ingeniería de Datos: Obteniendo, procesando y almacenando datos",Data_science
+15,Curso de AWS Redshift para Manejo de Big Data,/cursos/redshift-big-data-2020/,"Ingeniería de Datos: Obteniendo, procesando y almacenando datos",Data_science
+16,Crea un Web Scrapper profesional,,"Ingeniería de Datos: Obteniendo, procesando y almacenando datos",Data_science
+17,Curso de Fundamentos de Estadística y Análisis de Datos con Python,/cursos/estadistica-python/,Científico de Datos,Data_science
+18,Curso Práctico de Regresión Lineal con Python,/cursos/regresion-python/,Científico de Datos,Data_science
+19,Fundamentos de R,/cursos/fundamentos-r/,Científico de Datos,Data_science
+20,Curso de PostgreSQL Aplicado a Ciencia de Datos,/cursos/postgresql-datos/,Científico de Datos,Data_science
+21,Curso de Manipulación y Análisis de Datos con Pandas y Python,/cursos/pandas/,Científico de Datos,Data_science
+22,Desarrolla un reporte de análisis exploratorio de datos,,Científico de Datos,Data_science
+23,Curso de Fundamentos de Álgebra Lineal con Python,/cursos/algebra-lineal/,Ingeniero en Machine Learning,Data_science
+24,Curso de Introducción a Machine Learning,/cursos/machine-learning/,Ingeniero en Machine Learning,Data_science
+25,Curso de Álgebra Lineal Aplicada para Machine Learning,/cursos/algebra-ml/,Ingeniero en Machine Learning,Data_science
+26,Curso de TensorFlow.js,/cursos/tensorflow-js/,Ingeniero en Machine Learning,Data_science
+27,Curso de Redes Neuronales en Keras y Scikit-Learn,/cursos/keras-neural-networks/,Ingeniero en Machine Learning,Data_science
+28,Curso de Fundamentos de Procesamiento de Lenguaje Natural con Python y NLTK,/cursos/python-lenguaje-natural/,Ingeniero en Machine Learning,Data_science
+29,Desarrolla un reporte de análisis exploratorio de datos,,Ingeniero en Machine Learning,Data_science
+30,Curso de Tecnología para Gerentes y Directores no Técnicos,/cursos/tecnologia-gerentes/,Aprende las bases y crea tu propuesta de valor,Startups
+31,Curso para Comenzar tu Camino Emprendedor,/cursos/camino-emprendedor/,Aprende las bases y crea tu propuesta de valor,Startups
+32,Curso de Microsoft Teams,/cursos/microsoft-teams/,Aprende las bases y crea tu propuesta de valor,Startups
+33,Introducción a la Creación de Empresas y Startups,/cursos/creacion-de-empresas/,Aprende las bases y crea tu propuesta de valor,Startups
+34,Curso de Business Model Canvas,/cursos/canvas/,Aprende las bases y crea tu propuesta de valor,Startups
+35,Curso de Trabajo Remoto o Teletrabajo,/cursos/teletrabajo-trabajo-remoto/,Haz crecer tu startup,Startups
+36,Taller de Creación de Startups,/cursos/taller-startups-2020/,Haz crecer tu startup,Startups
+37,Curso de Finanzas para Startups,/cursos/financiera-startups/,Haz crecer tu startup,Startups
+38,Curso de Internacionalización para Startups,/cursos/internacionalizacion-startups/,Haz crecer tu startup,Startups
+39,Curso de Logística para Startups,/cursos/logistica-startups/,Haz crecer tu startup,Startups
+40,Curso de Excel Financiero,/cursos/excel-financiero/,Profundiza en temáticas útiles,Startups
+41,Curso de Estrategia Comercial,/cursos/estrategia-comercial/,Profundiza en temáticas útiles,Startups
+42,Curso de Estrategia Comercial B2B,/cursos/comercial-b2b/,Profundiza en temáticas útiles,Startups
+43,Curso Básico de Seguridad Informática para Empresas,/cursos/seguridad-empresas/,Profundiza en temáticas útiles,Startups
+44,Curso de Reclutamiento de Talento,/cursos/reclutamiento-talento/,Profundiza en temáticas útiles,Startups
+45,Curso de Trabajo Remoto o Teletrabajo,/cursos/teletrabajo-trabajo-remoto/,Profundiza en temáticas útiles,Startups
+46,Fundamentos de Ingeniería de Software,/clases/ingenieria/,Bases y Fundamentos,Web_development
+47,Curso Profesional de Git y GitHub,/clases/git-github/,Bases y Fundamentos,Web_development
+48,Curso de Desarrollo Web Online,/clases/html5-css3/,Bases y Fundamentos,Web_development
+49,Curso Definitivo de HTML y CSS,/clases/html-css-2020/,Bases y Fundamentos,Web_development
+50,Curso Práctico de HTML y CSS,/clases/html-practico/,Bases y Fundamentos,Web_development
+51,Curso de Prework: Buenas Prácticas y Entorno de Desarrollo,/clases/prework/,Bases y Fundamentos,Web_development
+52,Curso de Responsive Design,/clases/responsive-design/,Bases y Fundamentos,Web_development
+53,Curso de Sistemas de Diseño,/clases/sistemas-diseno/,Bases y Fundamentos,Web_development
+54,Curso de CSS Grid Layout,/clases/css-grid-layout/,Bases y Fundamentos,Web_development
+55,Curso Básico de JavaScript,/clases/basico-javascript/,Bases y Fundamentos,Web_development
+56,Curso de JavaScript Engine (V8) y el Navegador,/clases/javascript-navegador/,Bases y Fundamentos,Web_development
+57,Curso de Debugging con Chrome DevTools,/clases/devtools/,Bases y Fundamentos,Web_development
+58,Curso de ECMAScript 6+,/clases/ecmascript-6/,Bases y Fundamentos,Web_development
+59,Curso de Closures y Scope en JavaScript,/clases/scope/,Bases y Fundamentos,Web_development
+60,Curso de Asincronismo con JavaScript,/clases/asincronismo-js/,Bases y Fundamentos,Web_development
+61,Curso Profesional de JavaScript,/clases/javascript-profesional/,Bases y Fundamentos,Web_development
+62,Curso de Accesibilidad Web,/clases/accesibilidad-web/,Bases y Fundamentos,Web_development
+63,Curso de Single Page Application con JavaScript Vanilla,/clases/spa-javascript/,Bases y Fundamentos,Web_development
+64,Taller de Creación de Router para Single Page App con JavaScript,/clases/singlepage-app/,Bases y Fundamentos,Web_development
+65,Curso de Gestión de Dependencias y Paquetes con NPM,/clases/npm/,Bases y Fundamentos,Web_development
+66,Curso de Webpack,/clases/webpack/,Bases y Fundamentos,Web_development
+67,Curso de Postman,/clases/postman/,Bases y Fundamentos,Web_development
+68,Curso de JavaScript Testing con Jest 2019,/clases/js-jest-2019/,Bases y Fundamentos,Web_development
+69,Curso de Frontend Developer,/clases/frontend-developer/,Bases y Fundamentos,Web_development
+70,Curso de Preprocesadores CSS,/clases/preprocesadores/,Frameworks y Librerías,Web_development
+71,Curso de Sass,/clases/sass/,Frameworks y Librerías,Web_development
+72,Curso de React.js,/clases/react/,Frameworks y Librerías,Web_development
+73,Curso de React Avanzado,/clases/react-avanzado/,Frameworks y Librerías,Web_development
+74,Curso Práctico de React JS,/clases/react-ejs/,Frameworks y Librerías,Web_development
+75,Curso de React Router y Redux,/clases/react-router-redux/,Frameworks y Librerías,Web_development
+76,Curso de Fundamentos de TypeScript,/clases/typescript/,Frameworks y Librerías,Web_development
+77,Curso de Angular,/clases/angular/,Frameworks y Librerías,Web_development
+78,Curso Profesional de Angular,/clases/angular-profesional/,Frameworks y Librerías,Web_development
+79,Curso Básico de Vue.js,/clases/vuejs/,Frameworks y Librerías,Web_development
+80,Curso Avanzado de Vue.js,/clases/avanzado-vue/,Frameworks y Librerías,Web_development
+81,Curso Profesional de Vue.js,/clases/vuejs-profesional/,Frameworks y Librerías,Web_development
+82,Curso de Svelte,/clases/svelte/,Frameworks y Librerías,Web_development
+83,Curso de Sapper,/clases/sapper/,Frameworks y Librerías,Web_development
+84,Curso Práctico de Svelte y Sapper,/clases/svelte-sapper-practico/,Frameworks y Librerías,Web_development
+85,Curso de Fundamentos de Node.js,/clases/fundamentos-node/,Backend y Despliegue de Aplicaciones,Web_development
+86,Curso de Node.js,/clases/backend-js/,Backend y Despliegue de Aplicaciones,Web_development
+87,Curso Práctico de Node.js,/clases/practico-node/,Backend y Despliegue de Aplicaciones,Web_development
+88,Curso Avanzado de Node.js,/clases/nodejs/,Backend y Despliegue de Aplicaciones,Web_development
+89,Curso de Backend con Node.js,/clases/backend-nodejs/,Backend y Despliegue de Aplicaciones,Web_development
+90,Curso de Server Side Render con Express,/clases/ssr/,Backend y Despliegue de Aplicaciones,Web_development
+91,Curso de Autenticación con Passport.js,/clases/passport/,Backend y Despliegue de Aplicaciones,Web_development
+92,Curso de Integración de Backend y Frontend,/clases/bff/,Backend y Despliegue de Aplicaciones,Web_development
+93,Curso de Next.js,/clases/next-2020/,Backend y Despliegue de Aplicaciones,Web_development
+94,Curso de Estrategias para Aprender Inglés Online,/cursos/estrategias-ingles/,Primer contacto con el inglés,English_School
+95,Curso de Inglés Básico: Pronunciación,/cursos/pronunciacion-ingles/,Primer contacto con el inglés,English_School
+96,Curso de Inglés para Principiantes,/cursos/ingles-principiantes/,Primer contacto con el inglés,English_School
+97,Taller de Inglés para Principiantes,/cursos/taller-principiantes/,Primer contacto con el inglés,English_School
+98,Curso de Inglés Básico: Fundamentos,/cursos/ingles-basico/,Primer contacto con el inglés,English_School
+99,Curso de Inglés Básico: Gramática,/cursos/ingles-gramatica/,Primer contacto con el inglés,English_School
+100,Curso de Inglés Básico: Conversación,/cursos/ingles-conversacion/,Primer contacto con el inglés,English_School
+101,Curso de Inglés Práctico: Fundamentos,/cursos/ingles-1/,Práctica tus conocimientos,English_School
+102,Curso de Inglés Práctico: Gramática,/cursos/ingles-2/,Práctica tus conocimientos,English_School
+103,Curso de Inglés Práctico: Conversación,/cursos/ingles-facil-speaking/,Práctica tus conocimientos,English_School
+104,Curso de Inglés Intermedio: Gramática,/cursos/intermedio-gramatica/,Práctica tus conocimientos,English_School
+105,Curso de Inglés Técnico para Profesionales,/cursos/ingles/,Conviértete en un Profesional,English_School
+106,Curso de Escritura en Inglés,/cursos/escritura-ingles/,Conviértete en un Profesional,English_School
+107,Curso de Inglés para Entrevistas de Trabajo,/cursos/entrevistas-ingles/,Conviértete en un Profesional,English_School
+108,Curso de Inglés para Developers,/cursos/ingles-developers/,Conviértete en un Profesional,English_School
+109,Curso Gratis de Programación Básica,/cursos/programacion-basica/,Aprende a programar,Marketing
+110,Curso de Excel para el Análisis de Datos - 2018,/cursos/excel-2018/,Aprende a programar,Marketing
+111,Fundamentos de Bases de Datos,/cursos/bd/,Aprende a programar,Marketing
+112,Curso de Introducción al Marketing Digital,/cursos/introduccion-marketing/,Ahora las bases de Marketing,Marketing
+113,Curso de Growth Marketing,/cursos/growth-marketing/,Ahora las bases de Marketing,Marketing
+114,Curso de Marketing Móvil,/cursos/movil/,Ahora las bases de Marketing,Marketing
+115,Curso de Facebook Ads,/cursos/facebook-ads/,Empieza a medir tus campañas,Marketing
+116,Curso de Introducción a Google Tag Manager 📃,/cursos/gtm/,Empieza a medir tus campañas,Marketing
+117,Curso de Instagram Ads y Optimización de Campañas,/cursos/instagram/,Empieza a medir tus campañas,Marketing
+118,Curso de Google Analytics,/cursos/google-analytics/,Empieza a medir tus campañas,Marketing
+119,Curso Profesional de Google Ads,/cursos/google-adwords/,Empieza a medir tus campañas,Marketing
+120,Curso de Facebook Analytics,/cursos/fb-analytics/,Empieza a medir tus campañas,Marketing
+121,Curso de Google Data Studio,/cursos/data-studio/,Empieza a medir tus campañas,Marketing
