@@ -39,4 +39,4 @@ for k in schools.keys():
 
 Data_platzi_goals.reset_index(drop=True,inplace=True)
 
-Data_platzi_goals.to_csv('H:/2020-02/Platzi/Meta/Data_platzi_goals.csv')
+Data_platzi_goals.to_csv('D:/2020-02/Platzi/Meta/Data_platzi_goals.csv')

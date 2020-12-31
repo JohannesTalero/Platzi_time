@@ -3,7 +3,7 @@ import numpy as np
 import requests
 from bs4 import BeautifulSoup
 
-path='H:/2020-02/Platzi/Meta/'
+path='D:/2020-02/Platzi/Meta/'
 
 pg_web_platzi='https://platzi.com'
 
@@ -32,8 +32,9 @@ for a in range(len(goals_platzi_time)):
                     content_time=int(content_time.split(' ')[0].split(':')[0])*60+int(content_time.split(' ')[0].split(':')[1])
                 except:
                    content_time=np.nan
-                data_t=pd.DataFrame({'level':[content_name],
+                data_t=pd.DataFrame({'content':[content_name],
                                      'time':[content_time]})
+                data_t['concept_name']=concept_name           
                 data_t['courses_links']=link           
                 data_course=data_course.append(data_t)
     if a%10==0:
