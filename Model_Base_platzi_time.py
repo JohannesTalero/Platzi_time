@@ -49,19 +49,14 @@ Concept.columns=['Id_concept','courses_names','concept_name']
 Concept=pd.merge(Concept,Courses,how='left',on='courses_names')
 del Concept['courses_names']
 del Concept['courses_links']
-del Concept['Id_level']
+Concept.to_csv(path+'Concept'+'.csv')
 
+#-------------- Content --------------------------
+Content=Data_Orig[['content','time','concept_name']].drop_duplicates().reset_index(drop=True)
+Content.reset_index(inplace=True)
+Content.columns=['Id_content','content_names','time_content','concept_name']
+Content=pd.merge(Content,Concept,how='left',on='concept_name')
+del Content['concept_name']
+del Content['Id_courses']
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+Content.to_csv(path+'Content'+'.csv')
