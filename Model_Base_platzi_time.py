@@ -60,3 +60,20 @@ del Content['concept_name']
 del Content['Id_courses']
 
 Content.to_csv(path+'Content'+'.csv')
+
+#------------- Time Seen -----------------------
+TS=pd.DataFrame(columns=['Id_content','time','date','start_h','end_h','note'])
+TS.to_csv(path+'TS'+'.csv')
+
+
+
+
+
+
+
+
+
+
+
+
+
