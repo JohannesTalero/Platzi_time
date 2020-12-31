@@ -18,20 +18,45 @@ Schools.columns=['Id_School','Schools_name']
 Schools.to_csv(path+'School_Base'+'.csv')
 
 #-------------- Level --------------------------
-level_Orig=Data_Orig[['school','level']].drop_duplicates().reset_index(drop=True)
+level_Orig=Data_Orig[['level']].drop_duplicates().reset_index(drop=True)
 level_Orig.reset_index(inplace=True)
-level_Orig.columns=['Id_level','Schools_name','level_name']
+level_Orig.columns=['Id_level','level']
+level_Orig=pd.merge(level_Orig,Data_Orig[['school','level']].drop_duplicates(),how='left',on='level')
+level_Orig.columns=['Id_level','level_name','Schools_name']
 level_Orig=pd.merge(level_Orig,Schools,how='left',on='Schools_name')
 del level_Orig['Schools_name']
 level_Orig.to_csv(path+'Level_Base'+'.csv')
 
 #-------------- Courses --------------------------
-Courses=Data_Orig[['level','courses_names','courses_links']].drop_duplicates().reset_index(drop=True)
-level_Orig.reset_index(inplace=True)
-level_Orig.columns=['Id_level','Schools_name','level_name']
-level_Orig=pd.merge(level_Orig,Schools,how='left',on='Schools_name')
-del level_Orig['Schools_name']
-level_Orig.to_csv(path+'Level_Base'+'.csv')
+Courses=Data_Orig[['courses_names']].drop_duplicates().reset_index(drop=True)
+Courses.reset_index(inplace=True)
+Courses.columns=['Id_courses','courses_names']
+Courses=pd.merge(Courses,Data_Orig[['courses_names','courses_links']].drop_duplicates(),how='left',on='courses_names')
+Courses.to_csv(path+'Courses_Base'+'.csv')
+
+Courses_level=Data_Orig[['courses_names','level']].drop_duplicates().reset_index(drop=True)
+Courses_level=pd.merge(Courses_level,Courses,how='left',on='courses_names')
+Courses_level=pd.merge(Courses_level,level_Orig,how='left',right_on='level_name',left_on='level')
+Courses_level=Courses_level[['Id_courses','Id_level']]
+
+Courses_level=Courses_level.drop_duplicates().reset_index(drop=True)
+Courses_level.to_csv(path+'Courses_level'+'.csv')
+
+#-------------- Concept --------------------------
+Concept=Data_Orig[['courses_names','concept_name']].drop_duplicates().reset_index(drop=True)
+Concept.reset_index(inplace=True)
+Concept.columns=['Id_concept','courses_names','concept_name']
+Concept=pd.merge(Concept,Courses,how='left',on='courses_names')
+del Concept['courses_names']
+del Concept['courses_links']
+del Concept['Id_level']
+
+
+
+
+
+
+
 
 
 
