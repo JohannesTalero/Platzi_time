@@ -1,7 +1,7 @@
  # -*- coding: utf-8 -*-
 """
 Created on Thu Dec 31 13:00:52 2020
-@author: asus
+@author: 
 """
 
 import pandas as pd
@@ -111,7 +111,7 @@ def viewed_Courses(Id_courses, note_g=''):
         viewed_Concept(i, note_g)
 
 
-def input_validate(message, valid_answers):
+def input_validate(message, valid_answers,v_quit=False):
     inappropriate_Answer=True
     while inappropriate_Answer:
         try:
@@ -122,7 +122,39 @@ def input_validate(message, valid_answers):
                 print('Please select a valid value')
         except:
              print('Please select a valid value')
+
+    
+    print(clic)
     return(clic)
+
+def add_view_Concept(Id_courses):
+    Concepts=pd.read_csv('D:/2020-02/Platzi/Meta/'+'Concept'+'.csv',index_col=0)   
+    Concepts=Concepts[Concepts['Id_courses']==Id_courses]
+
+    print(f"""
+#################### Please select the Id_Concepts ####################
+{Concepts[['Id_concept','concept_name']]} 
+-1. Back to general menu          
+              """)
+    valid=list(Concepts.Id_concept.unique())
+    valid.append(-1)
+    Id_concept=input_validate('Id_concept', valid)
+    if Id_concept==-1:
+       add_view_GM()
+    print(f"""
+#################### do you want to add view ####################          
+1. All the concept {Concepts[Concepts['Id_concept']==Id_concept].reset_index(drop=True)['concept_name'][0]}
+2. Just a part
+              """)
+    valid=[1,2]
+    action2=input_validate('Action', valid)
+    if action2==1:
+        note=input('Add note: ')     
+        viewed_Concept(Id_concept, note='')
+        print('Successfully added')
+    else:
+        print(Id_courses)
+    
 
 def add_view_course(level_id):
     Courses_level=pd.read_csv('D:/2020-02/Platzi/Meta/'+'Courses_level'+'.csv',index_col=0)   
@@ -150,8 +182,14 @@ def add_view_course(level_id):
     if action2==1:
         note=input('Add note: ')     
         viewed_Courses(Id_courses,note)
+        print('Successfully added')
     else:
-        print(Id_courses)
+        add_view_Concept(Id_courses)
+    
+    
+    
+    
+    
     
 def add_view_GM():
     
@@ -163,7 +201,7 @@ Select:
           """)
     action1=input_validate('Action ', [-1,1])
     if action1==-1:
-        quit()
+        raise SystemExit
     School=pd.read_csv('D:/2020-02/Platzi/Meta/'+'School_Base'+'.csv',index_col=0)   
     print(f"""
 #################### Please select the id_School ####################
@@ -174,7 +212,7 @@ Select:
     valid.append(-1)
     school_id=input_validate('Id_School', valid)
     if school_id==-1:
-        quit()
+        raise SystemExit
     del School
     level_Orig=pd.read_csv('D:/2020-02/Platzi/Meta/'+'Level_Base'+'.csv',index_col=0)   
     level_Orig=level_Orig[level_Orig['Id_School']==school_id]
@@ -187,7 +225,7 @@ Select:
     valid.append(-1)
     Id_level=input_validate('Id_level', valid)
     if Id_level ==-1:
-        quit()
+        raise SystemExit
     add_view_course(Id_level)
  
   
