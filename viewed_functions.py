@@ -5,7 +5,6 @@ Created on Thu Dec 31 13:00:52 2020
 """
 
 import pandas as pd
-import numpy as np
 from datetime import datetime
 from datetime import timedelta
 
@@ -122,10 +121,45 @@ def input_validate(message, valid_answers,v_quit=False):
                 print('Please select a valid value')
         except:
              print('Please select a valid value')
-
-    
-    print(clic)
     return(clic)
+
+def add_view_Content(Id_concept):
+    Content=pd.read_csv('D:/2020-02/Platzi/Meta/'+'Content'+'.csv',index_col=0)   
+    Content=Content[Content['Id_concept']==Id_concept]
+    print(f"""
+#################### Please select the Id_content ####################
+{Content[['Id_content','content_names']]} 
+-1. Back to general menu          
+              """)
+
+    valid=list(Content.Id_content.unique())
+    valid.append(-1)
+
+    inappropriate_Answer=True
+    while inappropriate_Answer:
+        try:
+            clic=input('Id_content: ')
+            clic=clic.split(',')
+            clic=[int(x) for x in clic]
+            
+            if (len(set(clic).intersection(set(valid)))==len(set(clic))):
+                inappropriate_Answer=False
+            else:
+                print('Please select a valid value')
+        except:
+             print('Please select a valid value')
+  
+    if Id_concept==-1:
+       add_view_GM()
+    else:
+        
+        clic
+        times=[]
+        for c in clic:
+            times.append(Content[Content['Id_content']==c].reset_index(drop=True)['time_content'][0]) 
+        note=input('Add note: ')     
+        viewed_content_multiple(clic, times, note*len(clic))
+        print('Successfully added')
 
 def add_view_Concept(Id_courses):
     Concepts=pd.read_csv('D:/2020-02/Platzi/Meta/'+'Concept'+'.csv',index_col=0)   
@@ -150,10 +184,10 @@ def add_view_Concept(Id_courses):
     action2=input_validate('Action', valid)
     if action2==1:
         note=input('Add note: ')     
-        viewed_Concept(Id_concept, note='')
+        viewed_Concept(Id_concept, note)
         print('Successfully added')
     else:
-        print(Id_courses)
+        add_view_Content(Id_concept)
     
 
 def add_view_course(level_id):
