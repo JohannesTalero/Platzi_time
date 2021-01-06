@@ -8,7 +8,6 @@ import pandas as pd
 from datetime import datetime
 from datetime import timedelta
 
-
 # viewed_content
 def viewed_content(Id_content, timen, time_i, note=''):
     """
@@ -149,11 +148,10 @@ def add_view_Content(Id_concept):
         except:
              print('Please select a valid value')
   
-    if Id_concept==-1:
+    if clic==[-1]:
        add_view_GM()
     else:
-        
-        clic
+        clic=[c for c in clic if c!=-1]
         times=[]
         for c in clic:
             times.append(Content[Content['Id_content']==c].reset_index(drop=True)['time_content'][0]) 
@@ -219,11 +217,57 @@ def add_view_course(level_id):
         print('Successfully added')
     else:
         add_view_Concept(Id_courses)
-    
-    
-    
-    
-    
+
+
+def multiple_one_courses(Id_level):
+    print("""
+######################### please select  ########################
+Select:
+    -1. If you want to go out
+    1. If you want to add multiple courses
+    2. If you want to add more specific content.
+          """)
+    action1=input_validate('Action ', [-1,1,2])
+    if action1==-1:
+        raise SystemExit
+    elif  action1==2:
+        add_view_course(Id_level)
+    else:
+        Courses_level=pd.read_csv('D:/2020-02/Platzi/Meta/'+'Courses_level'+'.csv',index_col=0)   
+        Courses_level=Courses_level[Courses_level['Id_level']==Id_level]
+        del Courses_level['Id_level']
+        Courses=pd.read_csv('D:/2020-02/Platzi/Meta/'+'Courses_Base'+'.csv',index_col=0)   
+        Courses=pd.merge(Courses_level,Courses)
+        print(f"""
+#################### Please select the Id_courses ####################
+{Courses[['Id_courses','courses_names']]} 
+-1. Back to general menu          
+          """)
+        valid=list(Courses.Id_courses.unique())
+        valid.append(-1)
+
+        inappropriate_Answer=True
+        while inappropriate_Answer:
+            try:
+                clic=input('Id_courses: ')
+                clic=clic.split(',')
+                clic=[int(x) for x in clic]
+                 
+                if (len(set(clic).intersection(set(valid)))==len(set(clic))):
+                    inappropriate_Answer=False
+                else:
+                    print('Please select a valid value')
+            except:
+                 print('Please select a valid value')
+                 
+        if clic==[-1]:
+            add_view_GM()
+        else:
+            clic=[c for c in clic if c!=-1]
+            note=input('Add note: ')
+            for c in clic:
+                viewed_Courses(c,note)
+                            
     
 def add_view_GM():
     
@@ -260,21 +304,6 @@ Select:
     Id_level=input_validate('Id_level', valid)
     if Id_level ==-1:
         raise SystemExit
-    add_view_course(Id_level)
+    multiple_one_courses(Id_level)
  
-  
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
 

@@ -45,20 +45,24 @@ Courses_level.to_csv(path+'Courses_level'+'.csv')
 #-------------- Concept --------------------------
 Concept=Data_Orig[['courses_names','concept_name']].drop_duplicates().reset_index(drop=True)
 Concept.reset_index(inplace=True)
-Concept.columns=['Id_concept','courses_names','concept_name']
+Concept.columns=['Id_concept','courses_names','concept_name'] 
 Concept=pd.merge(Concept,Courses,how='left',on='courses_names')
 del Concept['courses_names']
 del Concept['courses_links']
 Concept.to_csv(path+'Concept'+'.csv')
 
 #-------------- Content --------------------------
-Content=Data_Orig[['content','time','concept_name']].drop_duplicates().reset_index(drop=True)
+Content=Data_Orig[['content','time','concept_name','courses_names']].drop_duplicates().reset_index(drop=True)
 Content.reset_index(inplace=True)
-Content.columns=['Id_content','content_names','time_content','concept_name']
-Content=pd.merge(Content,Concept,how='left',on='concept_name')
+Content.columns=['Id_content','content_names','time_content','concept_name','courses_names']
+Content=pd.merge(Content,Courses,how='left',on='courses_names')
+del Content['courses_links']
+del Content['courses_names']
+Content=pd.merge(Content,Concept,how='left',on=['concept_name','Id_courses'])
 del Content['concept_name']
 del Content['Id_courses']
 
+Content['time_content']=np.where(Content['time_content'].isnull(),60,Content['time_content'])
 Content.to_csv(path+'Content'+'.csv')
 
 #------------- Time Seen -----------------------
