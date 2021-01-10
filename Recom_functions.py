@@ -37,7 +37,7 @@ def def_state(Id_School,TS):
     Concept=pd.read_csv(path+'Concept'+'.csv', index_col=0)
     Content=pd.read_csv(path+'Content'+'.csv', index_col=0)
 
-    TS=pd.read_csv('path+'TS'+'.csv',index_col=0)   
+    TS=pd.read_csv(path+'TS'+'.csv',index_col=0)   
     #----------
     TS=pd.merge(TS,Content[['Id_content','Id_concept']],how='left',on='Id_content')
     TS=pd.merge(TS,Concept[['Id_courses','Id_concept']],how='left',on='Id_concept')
@@ -75,7 +75,7 @@ def Update_status():
     Concept=pd.read_csv(path+'Concept'+'.csv', index_col=0)
     Content=pd.read_csv(path+'Content'+'.csv', index_col=0)
 
-    TS=pd.read_csv('D:/2020-02/Platzi/Meta/'+'TS'+'.csv',index_col=0)   
+    TS=pd.read_csv(path+'TS'+'.csv',index_col=0)   
     #----------
     TS=pd.merge(TS,Content[['Id_content','Id_concept']],how='left',on='Id_content')
     TS=pd.merge(TS,Concept[['Id_courses','Id_concept']],how='left',on='Id_concept')
@@ -94,6 +94,18 @@ def Update_status():
         state, last_v =def_state(i,TS)
         temp_dict.update({'State':[state]})
         temp_dict.update({'Last_id':[last_v]})
+        
+        #Time and number Course
+        Grup_SC=Content[['Id_concept','time_content']].groupby('Id_concept').sum().reset_index()
+        Grup_SC=pd.merge(Grup_SC ,Concept[['Id_courses','Id_concept']],how='left',on='Id_concept')
+        Grup_SC=pd.merge(Grup_SC ,Courses_level,how='left',on='Id_courses')
+        Grup_SC=pd.merge(Grup_SC ,level_Orig[['Id_level','Id_School']],how='left',on='Id_level')
+        
+        time=Grup_SC.time_content.sum()
+        Num_Course=len(Grup_SC.Id_courses.unique())
+        temp_dict.update({'Coef':[time/Num_Course]})
+
+
 
 
 
