@@ -122,3 +122,105 @@ def Update_status():
         data=data.append(temp).reset_index(drop=True)
     data.to_csv(path+'state'+'.csv')
     return(data)
+
+def Recommendation(time_r):
+    #Update_status
+    School_Base=pd.read_csv(path+'School_Base'+'.csv', index_col=0)   
+    status=Update_status()
+    status=status.tail(len(School_Base)).reset_index(drop=True)
+    if len(set(status.state).intersection(set([1,2]))) > 0:
+        #End Course
+        status_1=status[status['state']==1]
+        
+        if  len(status_1)>0:
+            #Concept end
+            Content=pd.read_csv(path+'Content'+'.csv', index_col=0)
+            caso=status_1.reset_index(drop=True).iloc[0]
+            next_content=caso.Last_id
+
+            Id_concept=Content[Content['Id_content']==caso.Last_id].reset_index(drop=True).iloc[0].Id_concept
+            Content_v=Content[Content['Id_concept']==Id_concept]
+            Content_v=Content_v[Content_v['time_content']>caso.Last_id]
+            
+            while Content_v.time_content.sum() >= time_r:
+                Content_v=Content_v.head(len(Content_v)-1)
+            
+            Concept=pd.read_csv(path+'Concept'+'.csv', index_col=0)
+            Id_Courses=Concept[Concept.Id_concept==next_concept].reset_index(drop=True).iloc[0].Id_courses
+            Courses=pd.read_csv(path+'Courses_Base'+'.csv', index_col=0)
+            URL='https://platzi.com'+Courses[Courses['Id_courses']==Id_Courses].reset_index(drop=True).iloc[0].courses_links
+            Recommended_Cases=Content_v.content_names
+
+        else:
+            #Corse End
+            status_2=status[status['state']==2]
+            caso=status_2.reset_index(drop=True).iloc[0]
+            next_concept=caso.Last_id+1
+            Content=pd.read_csv(path+'Content'+'.csv', index_col=0)
+            Content_v=Content[Content.Id_concept==next_concept]
+            
+            while Content_v.time_content.sum() >= time_r:
+                Content_v=Content_v.head(len(Content_v)-1)
+            
+            Concept=pd.read_csv(path+'Concept'+'.csv', index_col=0)
+            Id_Courses=Concept[Concept.Id_concept==next_concept].reset_index(drop=True).iloc[0].Id_courses
+            Courses=pd.read_csv(path+'Courses_Base'+'.csv', index_col=0)
+            URL='https://platzi.com'+Courses[Courses['Id_courses']==Id_Courses].reset_index(drop=True).iloc[0].courses_links
+            Recommended_Cases=Content_v.content_names           
+    else:
+        #New Course
+        status['Coef_B']=status['Coef']*(1-status['2_Weeks'])
+        Recom=status[status['Coef_B']==status['Coef_B'].max()]        
+
+        if  Recom.state==3:
+            #Level unfinished
+            Last_Course=Recom.reset_index(drop=True).iloc[0].Last_id
+            
+            Courses_level=pd.read_csv(path+'Courses_level'+'.csv', index_col=0)
+            Courses_levels=Courses_level[Courses_level['Id_courses']==Last_Course]
+
+            level_Orig=pd.read_csv(path+'Level_Base'+'.csv', index_col=0)    
+            level_Orig=level_Orig[level_Orig['Id_School']==Recom.reset_index(drop=True).iloc[0].Id_School]
+            
+            Id_level=pd.merge(Courses_levels,level_Orig,on='Id_level').reset_index(drop=True).iloc[0].Id_level
+
+            Concept=pd.read_csv(path+'Concept'+'.csv', index_col=0)
+            Content=pd.read_csv(path+'Content'+'.csv', index_col=0)        
+            TS=pd.read_csv(path+'TS'+'.csv',index_col=0)   
+            TS=pd.merge(TS,Content[['Id_content','Id_concept']],how='left',on='Id_content')
+            TS=pd.merge(TS,Concept[['Id_courses','Id_concept']],how='left',on='Id_concept')
+            TS=pd.merge(TS,Courses_level,how='left',on='Id_courses')
+
+            Courses=pd.read_csv('D:/2020-02/Platzi/Meta/'+'Courses_Base'+'.csv',index_col=0)   
+
+            Courses_not_taken=[x for x in list(Courses_level[Courses_level['Id_level']==Id_level].Id_courses.unique()) if x not in  list(TS.Id_courses.unique())]
+            course_name=Courses[Courses['Id_courses']==min(Courses_not_taken)].reset_index(drop=True).iloc[0].courses_names
+            Id_concept=Concept[Concept['Id_courses']==min(Courses_not_taken)].reset_index(drop=True).iloc[0].Id_concept    
+            Content_v=Content[Content['Id_concept']==Id_concept]
+                        
+            while Content_v.time_content.sum() >= time_r:
+                Content_v=Content_v.head(len(Content_v)-1)           
+            
+            URL='https://platzi.com'+Courses[Courses['courses_names']==course_name].reset_index(drop=True).iloc[0].courses_links
+            Recommended_Cases=Content_v.content_names    
+        else:
+            #School nd
+            status_2=status[status['state']==2]
+    
+    
+    #   3. unfinished_level
+    #   4. unfinished_schools
+
+
+
+
+
+
+
+
+
+
+
+
+
+
