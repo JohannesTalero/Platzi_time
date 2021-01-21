@@ -95,7 +95,6 @@ def Update_status():
     TS_F=TS_F[['Id_School','time']].groupby('Id_School').sum().reset_index()
     TS_F['time']=TS_F['time']/sum(TS_F['time'])
     for si in School_Base.Id_School.unique():
-        print(si)
         temp_dict=dict()
         temp_dict.update({'date':[datetime.today()]})
         temp_dict.update({'Id_School':[si]})
@@ -117,7 +116,6 @@ def Update_status():
         except:
             temp_dict.update({'2_Weeks':[0]})        
             
-        print(temp_dict)
         temp=pd.DataFrame(temp_dict)
         data=data.append(temp).reset_index(drop=True)
     data.to_csv(path+'state'+'.csv')
@@ -146,7 +144,7 @@ def Recommendation(time_r):
                 Content_v=Content_v.head(len(Content_v)-1)
             
             Concept=pd.read_csv(path+'Concept'+'.csv', index_col=0)
-            Id_Courses=Concept[Concept.Id_concept==next_concept].reset_index(drop=True).iloc[0].Id_courses
+            Id_Courses=Concept[Concept.Id_content==next_content].reset_index(drop=True).iloc[0].Id_courses
             Courses=pd.read_csv(path+'Courses_Base'+'.csv', index_col=0)
             URL='https://platzi.com'+Courses[Courses['Id_courses']==Id_Courses].reset_index(drop=True).iloc[0].courses_links
             Recommended_Cases=Content_v.content_names
@@ -171,8 +169,8 @@ def Recommendation(time_r):
         #New Course
         status['Coef_B']=status['Coef']*(1-status['2_Weeks'])
         Recom=status[status['Coef_B']==status['Coef_B'].max()]        
-
-        if  Recom.state==3:
+        
+        if  Recom.state.values[0]==3:
             #Level unfinished
             Last_Course=Recom.reset_index(drop=True).iloc[0].Last_id
             
@@ -204,12 +202,41 @@ def Recommendation(time_r):
             URL='https://platzi.com'+Courses[Courses['courses_names']==course_name].reset_index(drop=True).iloc[0].courses_links
             Recommended_Cases=Content_v.content_names    
         else:
-            #School nd
-            status_2=status[status['state']==2]
+            #School unfinished
+            if Recom.Last_id.values[0]==-1:
+                print('Escuela no iniciada')
+                level_Orig=pd.read_csv(path+'Level_Base'+'.csv', index_col=0)    
+                next_level=level_Orig[level_Orig['Id_School']==Recom.Id_School.values[0]].Id_level.min()
+            else:
+                next_level=Recom.Last_id.values[0]+1
+                
+            Courses_levels=pd.read_csv(path+'Courses_level'+'.csv', index_col=0)
+            Courses_level=Courses_levels[Courses_levels['Id_level']==next_level]
+
+            #------------------------- TS ---------------------------------                
+            TS=pd.read_csv(path+'TS'+'.csv',index_col=0)   
+            Concept=pd.read_csv(path+'Concept'+'.csv', index_col=0)
+            Content=pd.read_csv(path+'Content'+'.csv', index_col=0)        
+            TS=pd.merge(TS,Content[['Id_content','Id_concept']],how='left',on='Id_content')
+            TS=pd.merge(TS,Concept[['Id_courses','Id_concept']],how='left',on='Id_concept')
+            TS=pd.merge(TS,Courses_level,how='left',on='Id_courses')
+            #-------------------------------------------------------------
+            Courses_not_taken=[x for x in list(Courses_level.Id_courses.unique()) if x not in  list(TS.Id_courses.unique())]
+            Courses=pd.read_csv('D:/2020-02/Platzi/Meta/'+'Courses_Base'+'.csv',index_col=0)   
+
+            course_name=Courses[Courses['Id_courses']==min(Courses_not_taken)].reset_index(drop=True).iloc[0].courses_names
+            Id_concept=Concept[Concept['Id_courses']==min(Courses_not_taken)].reset_index(drop=True).iloc[0].Id_concept    
+            Content_v=Content[Content['Id_concept']==Id_concept]
+                        
+            while Content_v.time_content.sum() >= time_r:
+                Content_v=Content_v.head(len(Content_v)-1)           
+            
+            URL='https://platzi.com'+Courses[Courses['courses_names']==course_name].reset_index(drop=True).iloc[0].courses_links
+            Recommended_Cases=Content_v.content_names    
+
+    #return
+    return(URL,Recommended_Cases)
     
-    
-    #   3. unfinished_level
-    #   4. unfinished_schools
 
 
 
